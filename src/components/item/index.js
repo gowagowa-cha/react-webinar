@@ -1,47 +1,24 @@
-import React, {useCallback, useState} from "react";
-import propTypes from 'prop-types';
-import plural from 'plural-ru';
-import './styles.css';
+import React from "react";
+import propTypes from "prop-types";
+import "./styles.css";
 
-function Item({item, onSelect, onDelete}){
-  console.log('Item', item.title);
-
-  const [counter, setCounter] = useState(0);
-
-  const callbacks = {
-    onClick: useCallback(() => {
-      // onSelect(item.code);
-      // if (!item.selected){
-        setCounter(counter + 1);
-      // }
-    }, [item, onSelect, counter, setCounter])
-  };
-
-  return (
-    <div className={'Item'  + (item.selected ? ' Item_selected' : '')} onClick={callbacks.onClick}>
-      <div className='Item__number'>{item.code}</div>
-      <div className='Item__title'>
-        {item.title}
-        {counter ? ` | Выделялся ${counter} ${plural(counter, 'раз', 'раза', 'раз')}` : null}
-      </div>
-      <div className='Item__actions'>
-        <button onClick={() => onDelete(item.code)}>
-          Удалить
-        </button>
-      </div>
-    </div>
-  )
+function Item(props) {
+	console.log("Item");
+	const { item, onAddItem } = props;
+	return (
+		<div className='item'>
+			<div className='item__number'>{item.code}</div>
+			<div className='item__title'>{item.title}</div>
+			<div className='item__actions'>
+				<div className='item__price'>{item.price} &#8381;</div>
+				<button onClick={() => onAddItem(item)}>Добавить</button>
+			</div>
+		</div>
+	);
 }
 
 Item.propTypes = {
-  item: propTypes.object.isRequired,
-  onSelect: propTypes.func.isRequired,
-  onDeleted: propTypes.func.isRequired
-}
-
-Item.defaultProps = {
-  onSelect: () => {},
-  onDeleted: () => {}
-}
+	item: propTypes.object.isRequired,
+};
 
 export default React.memo(Item);
