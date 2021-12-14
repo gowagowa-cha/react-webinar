@@ -6,11 +6,11 @@
     font-size: 18px;
 }
 
-.BasketSimple__label{
-
-}
-
 .BasketSimple__total{
     font-weight: bold;
     margin: 0 15px;
+}
+
+.BasketSimple__link {
+	margin-right: auto;
 }

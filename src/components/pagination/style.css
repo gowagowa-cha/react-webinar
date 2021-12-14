@@ -1,0 +1,28 @@
+.Pagination {
+  padding: 20px 21px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.Pagination__link {
+  min-width: 15px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.Pagination__link:hover {
+  background: #E1E1E1;
+  cursor: pointer;
+}
+
+.Pagination__link_active {
+  background: black;
+  color: white;
+}
+
+.Pagination__link_active:hover {
+  cursor: default;
+  background: black;
+  color: white;
+}
